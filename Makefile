@@ -3,8 +3,8 @@
 VENV := .venv
 
 ifeq ($(OS),Windows_NT)
-    VENV_BIN := $(VENV)/Scripts
-    PYTHON := $(VENV_BIN)/python.exe
+    VENV_BIN := $(VENV)\Scripts
+    PYTHON := $(VENV_BIN)\python.exe
     SYS_PYTHON := py
 else
     VENV_BIN := $(VENV)/bin
@@ -14,7 +14,7 @@ endif
 
 ## install — Create venv and install Clean + dev deps
 install:
-	$(SYS_PYTHON) -m venv $(VENV)
+	@if not exist "$(PYTHON)" $(SYS_PYTHON) -m venv $(VENV)
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -e ".[dev]"
 

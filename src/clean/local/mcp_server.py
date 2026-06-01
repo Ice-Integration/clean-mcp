@@ -9,7 +9,6 @@ from __future__ import annotations
 import asyncio
 import os
 import sys
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -1010,7 +1009,6 @@ async def _handle_search_code(
     default_repo=None,
     search_cache: dict | None = None,
 ):
-    t0 = time.monotonic()
     org_id = None
 
     query = arguments.get("query", "").strip()
